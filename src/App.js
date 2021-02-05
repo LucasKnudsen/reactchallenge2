@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react'
+import users from "./data/users-data";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+
+  render() {
+    const userData = users
+    const userList = userData.map((user, i) => {
+      return (
+        <div key={i}>
+          <h1>{user.name}</h1>
+          <p>{user.location}</p>
+          <p>{user.car}</p>
+        </div>
+      )
+    })
+
+    return (
+      <div className="App">
+        <div className="page-deets">
+          <h2>Loop Over an Array of Data</h2>
+        </div>
+        <div className="users">
+          {userList}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
